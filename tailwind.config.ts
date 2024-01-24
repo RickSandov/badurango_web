@@ -8,10 +8,35 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#FCB71E",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      animation: {
+        cloudsLeft: "cloudsLeft 6.5s ease-out forwards",
+        cloudsRight: "cloudsRight 6.5s ease-out  forwards",
+        logoElevate: "logoElevate 2.8s ease-out forwards",
+        appear: "appear 0.5s ease-in-out 2.5s backwards",
+      },
+      keyframes: {
+        appear: {
+          "0%": { opacity: "0" },
+        },
+        logoElevate: {
+          "100%": { transform: "translateY(-145%)" },
+        },
+        cloudsLeft: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-200vw)" },
+        },
+        cloudsRight: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(200vw)" },
+        },
       },
     },
   },
