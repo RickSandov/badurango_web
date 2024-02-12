@@ -29,7 +29,7 @@ const items = [
 
 export const Mision = () => {
     return (
-        <section id="hero" className="relative w-full flex flex-col justify-center items-center py-10 md:py-20 md:pb-40">
+        <section id="hero" className="relative w-full flex flex-col overflow-visible justify-center items-center py-10 md:py-20 md:pb-40">
             <Image
                 alt="Cielo"
                 src="/images/sky.png"
