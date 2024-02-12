@@ -37,10 +37,19 @@ const items = [
 export const AboutUs = () => {
     return (
         <section id='nosotros' className='relative'>
-            <div className='absolute right-0 -bottom-12 md:block hidden' >
+            <div className='absolute z-20 right-0 -bottom-12 md:block hidden' >
                 <RedVector />
             </div>
-            <div className='py-20 px-12 md:px-20 flex relative bg-black'>
+            <div className='bg-primary py-20 px-12 md:px-20 relative' >
+                <h3 className='text-3xl font-black text-black relative after:absolute after:-bottom-2 after:left-0 after:w-24 after:h-2 after:bg-bared'>¿Quienes somos?</h3>
+                <p className='mt-5 text-black md:max-w-[60%]'>Somos una <strong>oraganización civil</strong> sin fines de lucro con la misión de <strong>abatir la pobreza alimentaria</strong>, por medio del rescate de todo aquel alimento que no sea comercializable, evitando así su desperdicio y canalizándolo a las familias que se encuentran en inseguridad alimentaria.</p>
+                <div className='absolute right-28 -bottom-32 md:block hidden'>
+                    <div className='w-[400px] z-30 aspect-[430/475] relative'>
+                        <Image src='/images/girl.png' alt='niña' fill className='object-cover relative translate-y-20' />
+                    </div>
+                </div>
+            </div>
+            <div className='py-20 px-12 md:px-20 flex bg-black'>
                 <ul className='flex flex-col md:flex-row md:flex-wrap gap-8 md:gap-14 md:w-[60vw]'>
                     {items.map(({ image, text }) => (
                         <li key={image} className='flex flex-col items-center text-center md:text-left md:flex-row'>
@@ -50,18 +59,8 @@ export const AboutUs = () => {
                         </li>
                     ))}
                 </ul>
-                <div className='absolute right-28 -bottom-10 md:block hidden'>
-                    <div className='w-[400px] aspect-[430/475] relative'>
-                        <Image src='/images/girl.png' alt='niña' fill className='object-cover relative translate-y-20' />
-                    </div>
-                </div>
             </div>
-
-            <div className='bg-primary py-20 px-12 md:px-20' >
-                <h3 className='text-3xl font-black text-black relative after:absolute after:-bottom-2 after:left-0 after:w-24 after:h-2 after:bg-bared'>¿Quienes somos?</h3>
-                <p className='mt-5 text-black md:max-w-[60%]'>Somos una <strong>oraganización civil</strong> sin fines de lucro con la misión de <strong>abatir la pobreza alimentaria</strong>, por medio del rescate de todo aquel alimento que no sea comercializable, evitando así su desperdicio y canalizándolo a las familias que se encuentran en inseguridad alimentaria.</p>
-            </div>
-        </section>
+        </section >
     )
 }
 

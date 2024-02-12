@@ -54,7 +54,7 @@ export const Hero = () => {
                     height={500}
                 />
 
-                <a href='#nosotros' className="animate-appear mx-auto bg-bared text-white py-4 px-10 text-2xl uppercase relative z-20">
+                <a href='#nosotros' className="animate-appear mx-auto bg-black text-white py-4 px-10 uppercase relative z-20">
                     Donar Ahora
                 </a>
 
