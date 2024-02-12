@@ -18,11 +18,11 @@ export const Footer = () => {
 
             <div className='flex flex-wrap gap-10 justify-between items-end w-full px-12 md:px-20 relative -translate-y-10' >
                 <div>
-                    <p>Contacto</p>
+                    <p className='text-white'>Contacto</p>
                     <a className='text-primary font-bold text-xl' href="tel:">618 987 65 43</a>
                 </div>
                 <div>
-                    <p>Únete a la causa</p>
+                    <p className='text-white'>Únete a la causa</p>
                     <ul className='flex gap-5 items-center mt-2'>
                         <a href='' className='fill-primary w-10 h-10 flex justify-center items-center transition-colors hover:fill-bared'>
                             <IconFacebook />
