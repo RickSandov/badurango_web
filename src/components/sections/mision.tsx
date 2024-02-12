@@ -62,7 +62,7 @@ export const Mision = () => {
 
             <div className='absolute left-1/2 -translate-x-1/2 translate-y-20 bottom-0'>
                 <div className='md:w-[400px] w-[200px] aspect-[373/313] relative'>
-                    <Image src='/images/boy.png' alt='niño' fill className='object-cover relative' />
+                    <Image src='/images/boy.png' alt='niño' fill className='object-cover relative drop-shadow-md shadow-slate-800' />
                 </div>
             </div>
         </section>

@@ -36,11 +36,11 @@ const items = [
 
 export const AboutUs = () => {
     return (
-        <section id='nosotros' className='relative'>
+        <section id='nosotros' className='relative shadow-lg shadow-slate-800'>
             <div className='absolute z-20 right-0 -bottom-12 md:block hidden' >
                 <RedVector />
             </div>
-            <div className='bg-primary py-20 px-12 md:px-20 relative' >
+            <div className='bg-gradient-to-t from-primaryDark to-primary shadow-lg py-20 px-12 md:px-20 relative' >
                 <h3 className='text-3xl font-black text-black relative after:absolute after:-bottom-2 after:left-0 after:w-24 after:h-2 after:bg-bared'>¿Quienes somos?</h3>
                 <p className='mt-5 text-black md:max-w-[60%]'>Somos una <strong>oraganización civil</strong> sin fines de lucro con la misión de <strong>abatir la pobreza alimentaria</strong>, por medio del rescate de todo aquel alimento que no sea comercializable, evitando así su desperdicio y canalizándolo a las familias que se encuentran en inseguridad alimentaria.</p>
                 <div className='absolute right-28 -bottom-32 md:block hidden'>
