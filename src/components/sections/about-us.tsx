@@ -10,25 +10,25 @@ const items = [
     {
         image: '/images/mano-amiga.png',
         text: () => (
-            <p className='md:w-56 z-20'><strong>1</strong> de cada <strong>4</strong> personas sufre de <strong>inseguridad alimentaria</strong> en Durango.</p>
+            <p className='md:w-56 z-20 text-white'><strong>1</strong> de cada <strong>4</strong> personas sufre de <strong>inseguridad alimentaria</strong> en Durango.</p>
         )
     },
     {
         image: '/images/caridad.png',
         text: () => (
-            <p className='md:w-56 z-20'><strong>Rescatamos</strong> y <strong>distribuimos alimentos</strong> a lo más necesitados.</p>
+            <p className='md:w-56 z-20 text-white'><strong>Rescatamos</strong> y <strong>distribuimos alimentos</strong> a lo más necesitados.</p>
         )
     },
     {
         image: '/images/entrega-de-comida.png',
         text: () => (
-            <p className='md:w-56 z-20'>Hay <strong>suficiente</strong> comida <strong>para todos</strong>, el reto es distribuirla adecuadamente.</p>
+            <p className='md:w-56 z-20 text-white'>Hay <strong>suficiente</strong> comida <strong>para todos</strong>, el reto es distribuirla adecuadamente.</p>
         )
     },
     {
         image: '/images/comunidad.png',
         text: () => (
-            <p className='md:w-56 z-20'>Una sociedad <strong>justa y equitativa </strong>es posible con la ayuda de todos. <strong>¡Únete!</strong></p>
+            <p className='md:w-56 z-20 text-white'>Una sociedad <strong>justa y equitativa </strong>es posible con la ayuda de todos. <strong>¡Únete!</strong></p>
         )
     },
 
