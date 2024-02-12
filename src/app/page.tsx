@@ -1,6 +1,7 @@
 'use client'
 import { AboutUs } from "@/components/sections/about-us";
 import { Hero } from "@/components/sections/hero";
+import { Mision } from "@/components/sections/mision";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
@@ -11,6 +12,7 @@ export default function Home() {
     <main className=" overflow-hidden">
       <Hero />
       <AboutUs />
+      <Mision />
     </main>
   );
 }

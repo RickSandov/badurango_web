@@ -28,7 +28,7 @@ const items = [
     {
         image: '/images/comunidad.png',
         text: () => (
-            <p className='md:w-56 z-20'>Una sociedad <strong>justa y equitativa</strong>es posible con la ayuda de todos. <strong>¡Únete!</strong></p>
+            <p className='md:w-56 z-20'>Una sociedad <strong>justa y equitativa </strong>es posible con la ayuda de todos. <strong>¡Únete!</strong></p>
         )
     },
 
@@ -37,7 +37,7 @@ const items = [
 export const AboutUs = () => {
     return (
         <section id='nosotros' className='relative'>
-            <div className='absolute right-0 -bottom-12' >
+            <div className='absolute right-0 -bottom-12 md:block hidden' >
                 <RedVector />
             </div>
             <div className='py-20 px-12 md:px-20 flex relative'>
@@ -50,7 +50,7 @@ export const AboutUs = () => {
                         </li>
                     ))}
                 </ul>
-                <div className='absolute right-28 -bottom-10'>
+                <div className='absolute right-28 -bottom-10 md:block hidden'>
                     <div className='w-[400px] aspect-[430/475] relative'>
                         <Image src='/images/girl.png' alt='niña' fill className='object-cover relative translate-y-20' />
                     </div>
