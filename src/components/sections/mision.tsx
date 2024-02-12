@@ -49,7 +49,7 @@ export const Mision = () => {
                 className="object-cover absolute inset-0 -z-40"
             />
 
-            <div className='my-10 px-8 w-full flex items-center justify-center'>
+            <div className='my-10 px-8 w-full flex items-center justify-center py-10'>
                 <ul className='flex flex-col md:flex-row md:flex-wrap gap-8 md:gap-32  w-full items-start justify-center' >
                     {items.map(({ title, text }) => (
                         <li key={title} className='flex flex-col items-center text-center md:text-left md:w-[300px]'>
@@ -59,8 +59,9 @@ export const Mision = () => {
                     ))}
                 </ul>
             </div>
-            <div className='absolute left-1/2 -translate-x-1/2 translate-y-20 bottom-0 md:block hidden'>
-                <div className='w-[400px] aspect-[373/313] relative'>
+
+            <div className='absolute left-1/2 -translate-x-1/2 translate-y-20 bottom-0'>
+                <div className='md:w-[400px] w-[200px] aspect-[373/313] relative'>
                     <Image src='/images/boy.png' alt='niño' fill className='object-cover relative' />
                 </div>
             </div>

@@ -1,6 +1,7 @@
 'use client'
 import { AboutUs } from "@/components/sections/about-us";
 import { CanHelp } from "@/components/sections/can-help";
+import { Footer } from "@/components/sections/footer";
 import { Hero } from "@/components/sections/hero";
 import { Mision } from "@/components/sections/mision";
 import Image from "next/image";
@@ -15,6 +16,7 @@ export default function Home() {
       <AboutUs />
       <Mision />
       <CanHelp />
+      <Footer />
     </main>
   );
 }

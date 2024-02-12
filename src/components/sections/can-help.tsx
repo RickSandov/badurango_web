@@ -13,7 +13,7 @@ const items = [
         text: 'Cada granito cuenta, cada mano es un mundo de ayuda.'
     },
     {
-        image: '/images/entrega-de-comida.png',
+        image: '/images/donacion-de-alimentos.png',
         title: 'Alimento',
         text: 'Compartir alimentos es alimentar corazones y nutrir esperanzas.'
     },
@@ -30,7 +30,7 @@ const items = [
 ]
 export const CanHelp = () => {
     return (
-        <section id='ayuda' className='bg-white pt-20 pb-14 md:pt-32 md:pb-14'>
+        <section id='ayuda' className='bg-white pt-32 pb-40'>
             <h2 className='text-center text-3xl font-black text-black'>¿Cómo puedes <strong className='text-primary' >ayudar</strong>?</h2>
             holaaaa
 
