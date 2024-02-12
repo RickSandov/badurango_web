@@ -10,19 +10,19 @@ const items = [
     {
         title: 'Misión',
         text: () => (
-            <p className='drop-shadow-sm'><strong>Rescatar</strong> y <strong>distribuir</strong> alimentos a través del desarrollo y fortalecimiento de la red nacional de <strong>Bancos de Alimentos</strong> involucrando a la sociedad Duranguense para contribuir a un México <strong>sustentable y sin hambre</strong>.</p>
+            <p className='drop-shadow-sm text-white'><strong>Rescatar</strong> y <strong>distribuir</strong> alimentos a través del desarrollo y fortalecimiento de la red nacional de <strong>Bancos de Alimentos</strong> involucrando a la sociedad Duranguense para contribuir a un México <strong>sustentable y sin hambre</strong>.</p>
         )
     },
     {
         title: 'Visión',
         text: () => (
-            <p className='drop-shadow-sm'>Ser la institución con el modelo más efectivo para <strong>acabar con el hambre</strong> y el <strong>desperdicio</strong> del alimentos en México en el 2030.</p>
+            <p className='drop-shadow-sm text-white'>Ser la institución con el modelo más efectivo para <strong>acabar con el hambre</strong> y el <strong>desperdicio</strong> del alimentos en México en el 2030.</p>
         )
     },
     {
         title: 'Valores',
         text: () => (
-            <p className='drop-shadow-sm'><strong>Ayudar</strong> a quien lo necesita, actuando con  <strong>integridad, respeto, dignidad, igualdad y transparencia</strong> en todos los procesos que implica la operación.</p>
+            <p className='drop-shadow-sm text-white'><strong>Ayudar</strong> a quien lo necesita, actuando con  <strong>integridad, respeto, dignidad, igualdad y transparencia</strong> en todos los procesos que implica la operación.</p>
         )
     },
 ]

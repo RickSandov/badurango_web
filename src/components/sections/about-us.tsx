@@ -40,7 +40,7 @@ export const AboutUs = () => {
             <div className='absolute right-0 -bottom-12 md:block hidden' >
                 <RedVector />
             </div>
-            <div className='py-20 px-12 md:px-20 flex relative'>
+            <div className='py-20 px-12 md:px-20 flex relative bg-black'>
                 <ul className='flex flex-col md:flex-row md:flex-wrap gap-8 md:gap-14 md:w-[60vw]'>
                     {items.map(({ image, text }) => (
                         <li key={image} className='flex flex-col items-center text-center md:text-left md:flex-row'>
