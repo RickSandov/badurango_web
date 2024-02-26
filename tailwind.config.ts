@@ -8,10 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: "2rem",
+      },
       colors: {
         primary: "#FCB71E",
+        primaryLight: "#FFEBCC",
         primaryDark: "#FAAB00",
         bared: "#CE0F2D",
+        baGreen: "#009530",
+        baGreenDark: "#01561c",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

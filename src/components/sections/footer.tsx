@@ -11,7 +11,7 @@ import { IconTiktok } from '../icons/tiktok-icon'
 
 export const Footer = () => {
     return (
-        <footer className='flex flex-col items-center bg-black'>
+        <footer className='flex flex-col items-center bg-black mt-40'>
             <div className='max-w-[80%] scale-110 w-[600px] aspect-[645/489] relative -translate-y-32' >
                 <Image src='/images/mom.png' alt='familia' fill className='object-cover' />
             </div>

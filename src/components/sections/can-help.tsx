@@ -30,7 +30,7 @@ const items = [
 ]
 export const CanHelp = () => {
     return (
-        <section id='ayuda' className='bg-white pt-32 pb-40'>
+        <section id='ayuda' className='bg-white pt-32'>
             <h2 className='text-center text-3xl font-black text-black'>¿Cómo puedes <strong className='text-primary' >ayudar</strong>?</h2>
 
             <ul className='flex flex-col md:flex-row gap-10 text-center justify-center mt-10'>

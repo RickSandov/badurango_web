@@ -47,9 +47,9 @@ export const Hero = () => {
             {/* clouds animation */}
 
             {/* content */}
-            <div className="flex flex-col justify-center items-center gap-20 relative w-full max-w-[80vw] lg:max-w-1/2 animate-logoElevate top-[60%] md:top-[80%]" role="logo">
+            <div className="flex flex-col justify-center items-center gap-20 relative w-full max-w-[80vw] lg:max-w-1/2 animate-logoElevate top-[60%] md:top-[80%] z-10" role="logo">
                 <Image
-                    className="mx-auto max-w-full object-cover relative -z-20 drop-shadow-xl"
+                    className="mx-auto max-w-full object-cover relative -z-10 drop-shadow-xl"
                     src="/logo.svg"
                     alt="Vercel Logo"
                     priority
@@ -57,7 +57,7 @@ export const Hero = () => {
                     height={500}
                 />
 
-                <a href='#nosotros' className="animate-appear mx-auto bg-black text-white py-4 px-10 uppercase relative z-20 shadow-black shadow-md">
+                <a href='/donar' className="animate-appear mx-auto bg-black text-white py-4 px-10 uppercase shadow-black shadow-md">
                     Donar Ahora
                 </a>
 
