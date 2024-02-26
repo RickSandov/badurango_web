@@ -17,7 +17,7 @@ export const TopContribution = ({
     image
 }: ContributionProps) => {
     return (
-        <article className='bg-white max-w-full flex-grow rounded-lg shadow-lg py-10 px-16 flex flex-col items-center justify-center gap-3 transition-all hover:scale-[1.02] duration-300 hover:shadow-xl h-[300px] max-w-full'>
+        <article className='bg-white flex-grow rounded-lg shadow-lg py-10 px-16 flex flex-col items-center justify-center gap-3 transition-all hover:scale-[1.02] duration-300 hover:shadow-xl h-[300px] max-w-full'>
             <div className="relative size-24 p-2">
                 <div className='size-full rounded-full relative bg-white shadow-lg overflow-hidden' >
                     <Image src={image} alt={name} fill objectFit='contain' />

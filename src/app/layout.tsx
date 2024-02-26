@@ -17,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth focus:scroll-auto">
-      <body className={montserrat.className}>
+    <html lang="en" className={`scroll-smooth focus:scroll-auto ${montserrat.className}`}>
+      <body>
         <Navbar />
         {children}
         <Footer />
