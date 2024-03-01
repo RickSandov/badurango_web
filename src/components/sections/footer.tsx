@@ -1,16 +1,19 @@
-
-
+'use client'
 
 import Image from 'next/image'
 import React from 'react'
 import { IconFacebook } from '../icons/facebook'
 import { IconInstagram } from '../icons/instagram-icon'
-import { IconLinkedin } from '../icons/linkedin-icon'
 import { IconWhatsapp } from '../icons/WaIcon'
 import { IconTiktok } from '../icons/tiktok-icon'
+import { usePathname } from 'next/navigation'
 
 export const Footer = () => {
+    const path = usePathname()
+    if (path === '/checkout') return null;
+
     return (
+
         <footer className='flex flex-col items-center bg-black mt-40'>
             <div className='max-w-[80%] scale-110 w-[600px] aspect-[645/489] relative -translate-y-32' >
                 <Image src='/images/mom.png' alt='familia' fill className='object-cover' />
