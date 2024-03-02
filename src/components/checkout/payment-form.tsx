@@ -9,8 +9,7 @@ export const PaymentForm = () => {
 
     return (
         <>
-            {/* <PaymentElement /> */}
-            <ExpressCheckoutElement onConfirm={() => { }} />
+            <PaymentElement />
         </>
     )
 }
