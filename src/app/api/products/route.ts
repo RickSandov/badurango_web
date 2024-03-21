@@ -1,6 +1,9 @@
 // import { connect, disconnect } from "@/server/db";
 // import { Product } from "@/server/models";
 
+import { connect, disconnect } from "@/server/db";
+import { getProducts } from "@/server/handlers/product.handlers";
+
 // export async function POST(request: Request) {
 //   const data = await request.json();
 
@@ -21,10 +24,28 @@
 // }
 
 export async function GET() {
-  return new Response(JSON.stringify("OK"), {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  try {
+    await connect();
+    const products = await getProducts();
+    await disconnect();
+    return new Response(
+      JSON.stringify({
+        products,
+      }),
+      {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  } catch (error) {
+    await disconnect();
+    return new Response(JSON.stringify({ error }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 } // export async function GET

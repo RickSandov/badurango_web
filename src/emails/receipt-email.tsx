@@ -20,8 +20,8 @@ import * as React from "react";
 import { TProduct } from '../types/index';
 import { formatter } from "@/app/checkout/helpers";
 
-const baseUrl = process.env.BASE_URL
-    ? `https://${process.env.BASE_URL}`
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+    ? `https://${process.env.NEXT_PUBLIC_BASE_URL}`
     : "";
 
 export const DonationReceiptEmail = ({ donor:

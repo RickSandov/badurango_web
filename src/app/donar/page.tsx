@@ -1,24 +1,24 @@
 
-
-
 import { DisplayProduct } from '@/components/display-product'
 import { Title } from '@/components/title'
-import React from 'react'
 import { TheProject } from './the-project'
 import { TopContribution } from '@/components/contributions/top-contribution'
 import { DisplayContribution } from '@/components/contributions/display-contribution'
 import { DonateForm } from './donate-form'
-import { connect, disconnect } from '@/server/db'
-import { Product } from '@/server/models'
-import { TProduct } from '@/types'
 import { DisplayChashDonation } from '@/components/display-cash-donation'
+import { TProduct } from '@/types'
+
+
+
+async function getData(): Promise<TProduct[]> {
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
+    const data = await res.json();
+    return data.products.map(({ title, price, image, description, _id }: TProduct) => ({ title, price, image, description, _id }))
+}
 
 export default async function Donar() {
-    await connect();
-    const productsReq = await Product.find();
-    const products = JSON.parse(JSON.stringify(productsReq)) as TProduct[];
-    await disconnect();
-
+    const products = await getData();
     return (
         <>
             <main className='relative min-h-[100vh] pt-40'>

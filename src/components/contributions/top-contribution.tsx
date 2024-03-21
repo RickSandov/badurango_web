@@ -19,9 +19,9 @@ export const TopContribution = ({
     return (
         <article className='bg-white flex-grow rounded-lg shadow-lg py-10 px-16 flex flex-col items-center justify-center gap-3 transition-all hover:scale-[1.02] duration-300 hover:shadow-xl h-[300px] max-w-full'>
             <div className="relative p-2 size-24">
-                <div className='relative overflow-hidden bg-white rounded-full shadow-lg size-full' >
+                {/* <div className='relative overflow-hidden bg-white rounded-full shadow-lg size-full' >
                     <Image src={image} alt={name} width={100} height={100} className='object-contain' />
-                </div>
+                </div> */}
                 <span className='absolute right-0 flex items-center justify-center text-sm font-semibold leading-none text-white bg-red-500 rounded-full -top-1 size-7'>{rank}</span>
             </div>
             <div className='text-center'>
