@@ -3,14 +3,22 @@
 
 import { DisplayProduct } from '@/components/display-product'
 import { Title } from '@/components/title'
-import Image from 'next/image'
 import React from 'react'
 import { TheProject } from './the-project'
 import { TopContribution } from '@/components/contributions/top-contribution'
 import { DisplayContribution } from '@/components/contributions/display-contribution'
+import { DonateForm } from './donate-form'
+import { connect, disconnect } from '@/server/db'
+import { Product } from '@/server/models'
+import { TProduct } from '@/types'
+import { DisplayChashDonation } from '@/components/display-cash-donation'
 
+export default async function Donar() {
+    await connect();
+    const productsReq = await Product.find();
+    const products = JSON.parse(JSON.stringify(productsReq)) as TProduct[];
+    await disconnect();
 
-export default function Donar() {
     return (
         <>
             <main className='relative min-h-[100vh] pt-40'>
@@ -19,13 +27,29 @@ export default function Donar() {
                     <Title text='Tienda de donación' />
                 </div>
 
-                <ul id='productos' className='px-20 flex justify-center items-center md:justify-start flex-wrap'>
-                    <DisplayProduct />
+                <ul id='productos' className='flex flex-wrap justify-center gap-10 px-20 mt-20 md:gap-5 md:justify-start'>
+                    {products && products.map(({ title, price, image, description, _id }, index) => (
+                        <DisplayProduct
+                            key={index} product={
+                                {
+                                    title,
+                                    price,
+                                    image,
+                                    description,
+                                    _id
+                                }
+                            } />
+                    ))}
+                    <DisplayChashDonation />
                 </ul>
 
-                <div className='my-20' >
+                <div className='my-20 max-w-[90%] mx-auto' >
                     <Title text='Voluntariado y servicios' position='center' />
+                    <div className='mt-10'>
+                        <DonateForm />
+                    </div>
                 </div>
+
 
                 {/* Background SVGs */}
                 <BgTop />
@@ -34,7 +58,7 @@ export default function Donar() {
 
             <TheProject />
 
-            <div className="my-20 px-5">
+            <div className="px-5 my-20">
                 <Title text='Contribuciones' position='center' />
             </div>
 

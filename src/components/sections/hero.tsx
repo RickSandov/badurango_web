@@ -11,7 +11,7 @@ export const Hero = () => {
                 quality={100}
                 fill
                 sizes="100vw"
-                className="object-cover absolute inset-0 -z-50"
+                className="absolute inset-0 object-cover -z-50"
             />
             <Image
                 alt="nubes"
@@ -20,7 +20,7 @@ export const Hero = () => {
                 quality={100}
                 fill
                 sizes="100vw"
-                className="object-cover absolute inset-0 -z-40"
+                className="absolute inset-0 object-cover -z-40"
             />
 
             {/* clouds animation */}
@@ -30,7 +30,7 @@ export const Hero = () => {
                     src="/images/cloudsLeft.png"
                     priority
                     fill
-                    className="object-cover absolute inset-0 -z-20"
+                    className="absolute inset-0 object-cover -z-20"
                     sizes="200vw 400vw"
                 />
             </div>
@@ -40,7 +40,7 @@ export const Hero = () => {
                     src="/images/cloudsRight.png"
                     priority
                     fill
-                    className="object-cover absolute inset-0 -z-20"
+                    className="absolute inset-0 object-cover -z-20"
                     sizes="200vw 400vw"
                 />
             </div>
@@ -49,7 +49,7 @@ export const Hero = () => {
             {/* content */}
             <div className="flex flex-col justify-center items-center gap-20 relative w-full max-w-[80vw] lg:max-w-1/2 animate-logoElevate top-[60%] md:top-[80%] z-10" role="logo">
                 <Image
-                    className="mx-auto max-w-full object-cover relative -z-10 drop-shadow-xl"
+                    className="relative object-cover max-w-full mx-auto -z-10 drop-shadow-xl"
                     src="/logo.svg"
                     alt="Vercel Logo"
                     priority
@@ -57,12 +57,10 @@ export const Hero = () => {
                     height={500}
                 />
 
-                <a href='/donar' className="animate-appear mx-auto bg-black text-white py-4 px-10 uppercase shadow-black shadow-md">
+                <a href='/donar' className="px-10 py-4 mx-auto text-white uppercase bg-black shadow-md animate-appear shadow-black">
                     Donar Ahora
                 </a>
-
             </div>
-
         </section>
     )
 }

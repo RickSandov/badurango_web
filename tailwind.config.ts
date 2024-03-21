@@ -4,6 +4,7 @@ const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/cart/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -29,7 +30,11 @@ const config: Config = {
         cloudsLeft: "cloudsLeft 6.5s ease-out forwards",
         cloudsRight: "cloudsRight 6.5s ease-out  forwards",
         logoElevate: "logoElevate 2.8s ease-out forwards",
-        appear: "appear 0.5s ease-in-out 2.5s backwards",
+        appearHero: "appear 0.5s ease-in-out 2.5s backwards",
+        appearCartForeground: "appear 0.5s ease-in-out backwards",
+        slideInCart: "slideInCart .5s ease-in-out forwards",
+        disappearCartForeground:
+          "disappearCartForeground .5s ease-in-out forwards",
       },
       keyframes: {
         appear: {
@@ -45,6 +50,13 @@ const config: Config = {
         cloudsRight: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(200vw)" },
+        },
+        slideInCart: {
+          from: { transform: "translateX(100vw)" },
+          to: { transform: "translateX (0)" },
+        },
+        disappearCartForeground: {
+          "100%": { opacity: "0", display: "none" },
         },
       },
     },

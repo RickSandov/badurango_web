@@ -3,6 +3,8 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./navbar";
 import { Footer } from "@/components/sections/footer";
+import { Toaster } from "react-hot-toast";
+import { CartProvider } from "@/cart/CartProvider";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -18,9 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`scroll-smooth focus:scroll-auto ${montserrat.className}`}>
-      <body>
-        <Navbar />
-        {children}
+      <body >
+        <CartProvider>
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+          />
+          <Navbar />
+          {children}
+        </CartProvider>
         <Footer />
       </body>
     </html>

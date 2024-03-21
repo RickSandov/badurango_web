@@ -1,8 +1,22 @@
+"use client";
+
 import { api } from "@/lib/api";
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect, useState } from "react";
 
-export const useStripeConfig = (publishableKey: string) => {
+export const useStripeConfig = ({
+  publishableKey,
+  productId,
+  quantity,
+  total,
+  email,
+}: {
+  publishableKey: string;
+  productId?: string;
+  quantity?: number;
+  total?: number;
+  email: string;
+}) => {
   const [stripePromise] = useState(loadStripe(publishableKey));
   const [clientSecret, setClientSecret] = useState("");
   const [error, setError] = useState<null | string>(null);
@@ -12,9 +26,13 @@ export const useStripeConfig = (publishableKey: string) => {
     if (!clientSecret) {
       setIsLoading(true);
       api
-        .post("/create-payment-intent")
+        .post("/create-payment-intent", {
+          productId,
+          quantity,
+          total,
+          email,
+        })
         .then((req) => {
-          console.log(req.data);
           setClientSecret(req.data.clientSecret);
           setIsLoading(false);
         })

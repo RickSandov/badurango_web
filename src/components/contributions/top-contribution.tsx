@@ -18,17 +18,17 @@ export const TopContribution = ({
 }: ContributionProps) => {
     return (
         <article className='bg-white flex-grow rounded-lg shadow-lg py-10 px-16 flex flex-col items-center justify-center gap-3 transition-all hover:scale-[1.02] duration-300 hover:shadow-xl h-[300px] max-w-full'>
-            <div className="relative size-24 p-2">
-                <div className='size-full rounded-full relative bg-white shadow-lg overflow-hidden' >
-                    <Image src={image} alt={name} fill objectFit='contain' />
+            <div className="relative p-2 size-24">
+                <div className='relative overflow-hidden bg-white rounded-full shadow-lg size-full' >
+                    <Image src={image} alt={name} width={100} height={100} className='object-contain' />
                 </div>
-                <span className='absolute -top-1 right-0 text-sm size-7 leading-none bg-red-500 text-white rounded-full font-semibold flex justify-center items-center'>{rank}</span>
+                <span className='absolute right-0 flex items-center justify-center text-sm font-semibold leading-none text-white bg-red-500 rounded-full -top-1 size-7'>{rank}</span>
             </div>
             <div className='text-center'>
-                <h3 className='text-black font-semibold text-lg leading-tight'>{name}</h3>
-                {type && <span className='text-slate-400 font-semibold text-sm'>{type}</span>}
+                <h3 className='text-lg font-semibold leading-tight text-black'>{name}</h3>
+                {type && <span className='text-sm font-semibold text-slate-400'>{type}</span>}
             </div>
-            <p className='bg-primary text-primaryLight rounded-full px-3 py-1 font-semibold'>{amount}</p>
+            <p className='px-3 py-1 font-semibold rounded-full bg-primary text-primaryLight'>{amount}</p>
 
         </article>
     )
