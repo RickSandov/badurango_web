@@ -10,22 +10,31 @@ import { TProduct } from '@/types'
 
 
 
-async function getData(): Promise<TProduct[]> {
+// async function getData(): Promise<TProduct[]> {
 
-    try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
-        console.log({ res });
-        const data = await res.json();
-        console.log({ data })
-        return data.products.map(({ title, price, image, description, _id }: TProduct) => ({ title, price, image, description, _id }))
-    } catch (error) {
-        console.log('Error from getData', { error })
-        return []
-    }
-}
+//     try {
+//         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
+//         console.log({ res });
+//         const data = await res.json();
+//         console.log({ data })
+//         return data.products.map(({ title, price, image, description, _id }: TProduct) => ({ title, price, image, description, _id }))
+//     } catch (error) {
+//         console.log('Error from getData', { error })
+//         return []
+//     }
+// }
 
 export default async function Donar() {
-    const products = await getData();
+    // const products = await getData();
+    const products: TProduct[] = [
+        {
+            _id: '65ed3b257fb0db7841d8ea77',
+            title: 'Cemento CPC40',
+            description: '50kg',
+            image: '/images/cemento.png',
+            price: 250
+        }
+    ]
     return (
         <>
             <main className='relative min-h-[100vh] pt-40'>
