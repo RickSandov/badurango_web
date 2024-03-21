@@ -12,9 +12,16 @@ import { TProduct } from '@/types'
 
 async function getData(): Promise<TProduct[]> {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
-    const data = await res.json();
-    return data.products.map(({ title, price, image, description, _id }: TProduct) => ({ title, price, image, description, _id }))
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
+        console.log({ res });
+        const data = await res.json();
+        console.log({ data })
+        return data.products.map(({ title, price, image, description, _id }: TProduct) => ({ title, price, image, description, _id }))
+    } catch (error) {
+        console.log('Error from getData', { error })
+        return []
+    }
 }
 
 export default async function Donar() {
