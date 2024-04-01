@@ -16,19 +16,19 @@ export async function sendSuccessDonationEmail({
   product?: TProduct;
   total: number;
 }) {
-  const emailHtml = render(
-    DonationReceiptEmail({ donor, donationDate, product, total })
-  );
-
-  const options = {
-    from: `Banco de Alimentos Durango <${process.env.EMAIL}>`,
-    to,
-    // subject: `Tu pedido ${order.orderNumber} va en camino!`,
-    subject: `Gracias por tu donación`,
-    html: emailHtml,
-  };
-
   try {
+    const emailHtml = render(
+      DonationReceiptEmail({ donor, donationDate, product, total })
+    );
+
+    const options = {
+      from: `Banco de Alimentos Durango <${process.env.EMAIL}>`,
+      to,
+      // subject: `Tu pedido ${order.orderNumber} va en camino!`,
+      subject: `Gracias por tu donación`,
+      html: emailHtml,
+    };
+
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST || "",
       port: 465,
@@ -44,6 +44,7 @@ export async function sendSuccessDonationEmail({
 
     transporter.verify().then(async () => {
       const send = await transporter.sendMail(options);
+      console.log({ send });
     });
   } catch (error) {
     console.log("error from email index", { error });

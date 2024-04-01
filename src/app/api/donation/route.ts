@@ -45,10 +45,7 @@ export async function POST(request: Request) {
     const updatedDonor = await Donor.findByIdAndUpdate(donor._id, {
       $push: { donations: newDonation._id },
     });
-    console.log({ updatedDonor });
     await disconnect();
-
-    // const mail = await transporter.sendMail({});
 
     await sendSuccessDonationEmail({
       donationDate: format(newDonation.date, "dd/MM/yyyy"),
