@@ -1,13 +1,8 @@
-import { Payment } from "@/components/checkout/payment";
+
 import { connect, disconnect } from "@/server/db";
 import { getProductById } from '@/server/handlers/product.handlers';
-import { CheckoutProduct } from "./checkout-product";
-import { CashForm } from "./cash-form";
-import { formatter } from "./helpers";
-import { PersonaForm } from "./persona-form";
 import { CashDonation } from "./cash-donation";
 import { ProductDonation } from "./product-donation";
-import { useLayoutEffect } from "react";
 
 export default async function Page({
     searchParams,

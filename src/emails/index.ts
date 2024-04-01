@@ -46,8 +46,8 @@ export async function sendSuccessDonationEmail({
       html: emailHtml,
     };
 
-    console.log("sending email");
     const send = await transporter.sendMail(options);
+    console.log({ send });
   } catch (error) {
     console.log("error from email index", { error });
   }

@@ -38,8 +38,8 @@ export function DonationReceiptEmail({ donor:
                             <Column>
                                 <Img
                                     src={`${baseUrl}/images/logo_primary.png`}
-                                    width="60"
-                                    height="42"
+                                    width="150"
+                                    height="100"
                                     alt="Banco de alimentos de Durango"
                                     style={{
                                         objectFit: "contain",
@@ -406,6 +406,7 @@ const productIcon = {
     margin: "0 0 0 20px",
     borderRadius: "14px",
     border: "1px solid rgba(128,128,128,0.2)",
+    objectFit: "contain" as const,
 };
 
 const productTitle = { fontSize: "12px", fontWeight: "600", ...resetText };
