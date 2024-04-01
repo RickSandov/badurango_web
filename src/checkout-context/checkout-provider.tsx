@@ -5,18 +5,21 @@ import { CheckoutContext, CheckoutReducer, TPersonaForm } from './';
 import { CheckoutBreadcrumbs } from '@/app/checkout/breadcrumbs';
 import { api } from '@/lib/api';
 import { TDonationType } from '@/types';
+import { TProductOnCart } from '@/cart/CartProvider';
 
 export interface CheckoutState {
     hasRegistered: boolean;
     persona: TPersonaForm | null;
     donationType: TDonationType | null;
-    productToDonate: string | null;
+    productIdToDonate: string | null;
+    productToDonate: TProductOnCart | null,
 }
 
 const Checkout_INITIAL_STATE: CheckoutState = {
     hasRegistered: false,
     persona: null,
     donationType: null,
+    productIdToDonate: null,
     productToDonate: null,
 };
 
@@ -48,8 +51,12 @@ export const CheckoutProvider: FC<PropsWithChildren> = ({ children }) => {
         dispatch({ type: '[Checkout] - setDonationType', payload: donationType })
     }
 
-    const setProductToDonate = (productId: string) => {
-        dispatch({ type: '[Checkout] - setProductToDonate', payload: productId })
+    const setProductIdToDonate = (productId: string) => {
+        dispatch({ type: '[Checkout] - setProductIdToDonate', payload: productId })
+    }
+
+    const setProductToDonate = (product: TProductOnCart) => {
+        dispatch({ type: '[Checkout] - setProductToDonate', payload: product })
     }
 
     return (
@@ -61,6 +68,7 @@ export const CheckoutProvider: FC<PropsWithChildren> = ({ children }) => {
             setHasRegistered,
             setPersona,
             setDonationType,
+            setProductIdToDonate,
             setProductToDonate
             // resetPersona
         }} >

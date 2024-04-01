@@ -1,6 +1,7 @@
 import { TDonationType, donationType } from "@/types";
 import { TPersonaForm } from ".";
 import { CheckoutState } from "./checkout-provider";
+import { TProductOnCart } from "@/cart/CartProvider";
 
 type CheckoutActionType =
   | {
@@ -16,8 +17,12 @@ type CheckoutActionType =
       payload: TDonationType;
     }
   | {
-      type: "[Checkout] - setProductToDonate";
+      type: "[Checkout] - setProductIdToDonate";
       payload: string; // product id
+    }
+  | {
+      type: "[Checkout] - setProductToDonate";
+      payload: TProductOnCart; // product id
     };
 
 export const ceckoutReducer = (
@@ -42,6 +47,13 @@ export const ceckoutReducer = (
       return {
         ...state,
         donationType: action.payload,
+      };
+
+    case "[Checkout] - setProductIdToDonate":
+      return {
+        ...state,
+        productIdToDonate: action.payload,
+        donationType: donationType.producto,
       };
 
     case "[Checkout] - setProductToDonate":

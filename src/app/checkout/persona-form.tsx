@@ -9,10 +9,11 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CheckoutContext, TPersonaForm } from '@/checkout-context';
 import { donorDisplayArray, donorTypeArray } from '@/types';
+import { CheckoutProduct } from './checkout-product';
 
 export const PersonaForm = () => {
 
-    const { setPersona, persona: statePersona, setHasRegistered } = useContext(CheckoutContext);
+    const { setPersona, persona: statePersona, productToDonate } = useContext(CheckoutContext);
     const [isLoading, setIsLoading] = useState(false);
     const { handleSubmit, watch, register } = useForm();
 
@@ -47,6 +48,20 @@ export const PersonaForm = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 100 }}
         >
+            {productToDonate && (
+                <div className='mb-10'>
+                    <ul id="productos" className="md:w-[300px] max-w-full flex flex-col w-full mx-auto">
+                        <CheckoutProduct product={{
+                            _id: productToDonate._id,
+                            title: productToDonate.title,
+                            description: productToDonate.description,
+                            image: productToDonate.image,
+                            price: productToDonate.price,
+                            quantity: +productToDonate.quantity
+                        }} />
+                    </ul>
+                </div>
+            )}
             <Form onSubmit={handleSubmit(onSubmit)} className='mb-12' >
                 <h2 className='mb-5 text-xl font-bold text-center text-baGreen'>Registro de Donante</h2>
                 <div className='flex flex-col gap-2 my-4 px-5'>

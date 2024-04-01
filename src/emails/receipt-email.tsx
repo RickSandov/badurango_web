@@ -1,6 +1,4 @@
 
-
-
 import { TDonor } from "@/types";
 import {
     Body,
@@ -20,278 +18,303 @@ import * as React from "react";
 import { TProduct } from '../types/index';
 import { formatter } from "@/app/checkout/helpers";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
-    ? `https://${process.env.NEXT_PUBLIC_BASE_URL}`
-    : "";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
 
-export const DonationReceiptEmail = ({ donor:
-    { name, rfc, phone, publicDonor, type, displayType },
-    donationDate, product, total, amount }:
-    { donor: TDonor, donationDate: string, product?: TProduct, total: number, amount: number }) => (
-    <Html>
-        <Head />
-        <Preview>Recibo de donación</Preview>
+export function DonationReceiptEmail({ donor:
+    { name, rfc, phone },
+    donationDate, product, total }:
+    { donor: TDonor, donationDate: string, product?: TProduct, total: number }) {
 
-        <Body style={main}>
-            <Container style={container}>
-                <Section>
-                    <Row>
-                        <Column>
-                            <Img
-                                src={`${baseUrl}/public/images/logo.png`}
-                                width="60"
-                                height="42"
-                                alt="Banco de alimentos de Durango"
-                                style={{
-                                    objectFit: "contain",
-                                }}
-                            />
-                        </Column>
+    return (
+        <Html>
+            <Head />
 
-                        <Column align="right" style={tableCell}>
-                            <Text style={heading}>Recibo de donación</Text>
-                        </Column>
-                    </Row>
-                </Section>
-                <Section>
-                    <Text style={cupomText}>
-                        ¡Gracias! Con tu donación, la construcción del Banco de Alimentos de Durango será posible.
-                    </Text>
-                </Section>
-                <Section style={informationTable}>
-                    <Row style={informationTableRow}>
-                        <Column colSpan={2}>
-                            <Section>
+            <Preview>Recibo de donación</Preview>
+
+            <Body style={main}>
+                <Container style={container}>
+                    <Section>
+                        <Row align="center">
+                            <Column>
+                                <Img
+                                    src={`${baseUrl}/images/logo_primary.png`}
+                                    width="60"
+                                    height="42"
+                                    alt="Banco de alimentos de Durango"
+                                    style={{
+                                        objectFit: "contain",
+                                    }}
+                                />
+                            </Column>
+
+                            <Column align="right" style={tableCell}>
+                                <Text style={heading}>Recibo de donación</Text>
+                            </Column>
+                        </Row>
+                    </Section>
+                    <Section>
+                        <Text style={cupomText}>
+                            ¡Gracias! Con tu donación, la construcción del Banco de Alimentos de Durango será posible.
+                        </Text>
+                    </Section>
+                    <Section style={informationTable}>
+                        <Row style={informationTableRow}>
+                            <Column colSpan={2}>
+                                <Section>
+                                    <Row>
+                                        <Column style={informationTableColumn}>
+                                            <Text style={informationTableLabel}>Nombre o razón social</Text>
+                                            <Link
+                                                style={{
+                                                    ...informationTableValue,
+                                                    color: "#15c",
+                                                    textDecoration: "underline",
+                                                }}
+                                            >
+                                                {name}
+                                            </Link>
+                                        </Column>
+                                        <Column style={informationTableColumn}>
+                                            <Text style={informationTableLabel}>Fecha de donación</Text>
+                                            <Text style={informationTableValue}>{donationDate}</Text>
+                                        </Column>
+                                    </Row>
+
+                                    <Row>
+                                        <Column style={informationTableColumn}>
+                                            <Text style={informationTableLabel}>RFC</Text>
+                                            <Text style={informationTableValue}>{rfc}</Text>
+                                        </Column>
+                                    </Row>
+                                    <Row>
+                                        <Column style={informationTableColumn}>
+                                            <Text style={informationTableLabel}>Número de contacto</Text>
+                                            <Link
+                                                style={{
+                                                    ...informationTableValue,
+                                                    color: "#15c",
+                                                    textDecoration: "underline",
+                                                }}
+                                            >
+                                                {phone}
+                                            </Link>
+                                        </Column>
+                                    </Row>
+                                    <Row>
+                                        <Column style={informationTableColumn}>
+                                            <Text style={informationTableLabel}>ORDER</Text>
+                                            <Link
+                                                style={{
+                                                    ...informationTableValue,
+                                                    color: "#15c",
+                                                    textDecoration: "underline",
+                                                }}
+                                            >
+                                                ver donación
+                                            </Link>
+                                        </Column>
+                                    </Row>
+                                </Section>
+                            </Column>
+                            {/* <Column style={informationTableColumn} colSpan={2}>
+                                    <Text style={informationTableLabel}>BILLED TO</Text>
+                                    <Text style={informationTableValue}>
+                                        Visa .... 7461 (Apple Pay)
+                                    </Text>
+                                    <Text style={informationTableValue}>Alan Turing</Text>
+                                    <Text style={informationTableValue}>2125 Chestnut St</Text>
+                                    <Text style={informationTableValue}>San Francisco, CA 94123</Text>
+                                    <Text style={informationTableValue}>USA</Text>
+                                </Column> */}
+                        </Row>
+                    </Section>
+                    <Section style={productTitleTable}>
+                        <Text style={productsTitle}>Donación</Text>
+                    </Section>
+                    <Section>
+                        {
+                            product ? (
                                 <Row>
-                                    <Column style={informationTableColumn}>
-                                        <Text style={informationTableLabel}>Nombre o razón social</Text>
-                                        <Link
-                                            style={{
-                                                ...informationTableValue,
-                                                color: "#15c",
-                                                textDecoration: "underline",
-                                            }}
-                                        >
-                                            {name}
-                                        </Link>
+                                    <Column style={{ width: "64px" }}>
+                                        <Img
+                                            src={`${baseUrl}${product.image}`}
+                                            width="64"
+                                            height="64"
+                                            alt={`${baseUrl}/${product.image}`}
+                                            style={productIcon}
+                                        />
+                                    </Column>
+                                    <Column style={{ paddingLeft: "22px" }}>
+                                        <Text style={productTitle}>{product.title}</Text>
+                                        <Text style={productDescription}>{product.description}</Text>
+                                    </Column>
+
+                                    <Column style={productPriceWrapper} align="right">
+                                        <Text style={productPrice}>{formatter.format(product.price)}</Text>
+                                        <Text style={productQuantity}>x{total / product.price}</Text>
                                     </Column>
                                 </Row>
-
+                            ) : (
                                 <Row>
-                                    <Column style={informationTableColumn}>
-                                        <Text style={informationTableLabel}>Fecha de donación</Text>
-                                        <Text style={informationTableValue}>{donationDate}</Text>
+                                    <Column style={{ paddingLeft: "22px" }}>
+                                        <Text style={productTitle}>Donación de efectivo</Text>
+                                    </Column>
+
+                                    <Column style={productPriceWrapper} align="right">
+                                        <Text style={productPrice}>{formatter.format(total)}</Text>
                                     </Column>
                                 </Row>
-
-                                <Row>
-                                    <Column style={informationTableColumn}>
-                                        <Text style={informationTableLabel}>RFC</Text>
-                                        <Text style={informationTableValue}>{rfc}</Text>
-                                    </Column>
-                                    <Column style={informationTableColumn}>
-                                        <Text style={informationTableLabel}>ORDER</Text>
-                                        <Link
-                                            style={{
-                                                ...informationTableValue,
-                                                color: "#15c",
-                                                textDecoration: "underline",
-                                            }}
-                                        >
-                                            ver donación
-                                        </Link>
-                                    </Column>
-                                </Row>
-                            </Section>
-                        </Column>
-                        {/* <Column style={informationTableColumn} colSpan={2}>
-                            <Text style={informationTableLabel}>BILLED TO</Text>
-                            <Text style={informationTableValue}>
-                                Visa .... 7461 (Apple Pay)
-                            </Text>
-                            <Text style={informationTableValue}>Alan Turing</Text>
-                            <Text style={informationTableValue}>2125 Chestnut St</Text>
-                            <Text style={informationTableValue}>San Francisco, CA 94123</Text>
-                            <Text style={informationTableValue}>USA</Text>
-                        </Column> */}
-                    </Row>
-                </Section>
-                <Section style={productTitleTable}>
-                    <Text style={productsTitle}>Donación</Text>
-                </Section>
-                <Section>
-                    {
-                        product && (
+                            )
+                        }
+                    </Section>
+                    <Hr style={productPriceLine} />
+                    <Section align="right">
+                        <Row>
+                            <Column style={tableCell} align="right">
+                                <Text style={productPriceTotal}>TOTAL</Text>
+                            </Column>
+                            <Column style={productPriceVerticalLine}></Column>
+                            <Column style={productPriceLargeWrapper}>
+                                <Text style={productPriceLarge}>
+                                    {formatter.format(total)}
+                                </Text>
+                            </Column>
+                        </Row>
+                    </Section>
+                    {/* <Hr style={productPriceLineBottom} />
+                        <Section>
                             <Row>
-                                <Column style={{ width: "64px" }}>
+                                <Column align="center" style={block}>
                                     <Img
-                                        src={`${baseUrl}/static/apple-hbo-max-icon.jpeg`}
-                                        width="64"
-                                        height="64"
-                                        alt={`${baseUrl}/${product.image}`}
-                                        style={productIcon}
+                                        src={`${baseUrl}/static/apple-card-icon.png`}
+                                        width="60"
+                                        height="17"
+                                        alt="Apple Card"
                                     />
                                 </Column>
-                                <Column style={{ paddingLeft: "22px" }}>
-                                    <Text style={productTitle}>{product.title}</Text>
-                                    <Text style={productDescription}>{product.description}</Text>
-                                </Column>
-
-                                <Column style={productPriceWrapper} align="right">
-                                    <Text style={productPrice}>{product.price}</Text>
-                                    <Text style={productQuantity}>x{amount / product.price}</Text>
+                            </Row>
+                        </Section>
+                        <Section>
+                            <Row>
+                                <Column align="center" style={ctaTitle}>
+                                    <Text style={ctaText}>Save 3% on all your Apple purchases.</Text>
                                 </Column>
                             </Row>
-                        )
-                    }
-                </Section>
-                <Hr style={productPriceLine} />
-                <Section align="right">
-                    <Row>
-                        <Column style={tableCell} align="right">
-                            <Text style={productPriceTotal}>TOTAL</Text>
-                        </Column>
-                        <Column style={productPriceVerticalLine}></Column>
-                        <Column style={productPriceLargeWrapper}>
-                            <Text style={productPriceLarge}>
-                                ${formatter.format(total)}
-                            </Text>
-                        </Column>
-                    </Row>
-                </Section>
-                <Hr style={productPriceLineBottom} />
-                <Section>
-                    <Row>
-                        <Column align="center" style={block}>
-                            <Img
-                                src={`${baseUrl}/static/apple-card-icon.png`}
-                                width="60"
-                                height="17"
-                                alt="Apple Card"
-                            />
-                        </Column>
-                    </Row>
-                </Section>
-                <Section>
-                    <Row>
-                        <Column align="center" style={ctaTitle}>
-                            <Text style={ctaText}>Save 3% on all your Apple purchases.</Text>
-                        </Column>
-                    </Row>
-                </Section>
-                <Section>
-                    <Row>
-                        <Column align="center" style={walletWrapper}>
-                            <Link
-                                href="https://wallet.apple.com/apple-card/setup/feature/ccs?referrer=cid%3Dapy-120-100003"
-                                style={walletLink}
-                            >
-                                <Img
-                                    src={`${baseUrl}/static/apple-wallet.png`}
-                                    width="28"
-                                    height="28"
-                                    alt="Apple Wallet"
-                                    style={walletImage}
-                                />
-                                <span style={walletLinkText}>Apply and use in minutes</span>
+                        </Section> */}
+                    {/* <Section>
+                            <Row>
+                                <Column align="center" style={walletWrapper}>
+                                    <Link
+                                        href="https://wallet.apple.com/apple-card/setup/feature/ccs?referrer=cid%3Dapy-120-100003"
+                                        style={walletLink}
+                                    >
+                                        <Img
+                                            src={`${baseUrl}/static/apple-wallet.png`}
+                                            width="28"
+                                            height="28"
+                                            alt="Apple Wallet"
+                                            style={walletImage}
+                                        />
+                                        <span style={walletLinkText}>Apply and use in minutes</span>
+                                    </Link>
+                                </Column>
+                            </Row>
+                        </Section> */}
+                    <Hr style={walletBottomLine} />
+                    {/* <Text style={footerText}>
+                            1. 3% savings is earned as Daily Cash and is transferred to your Apple
+                            Cash card when transactions post to your Apple Card account. If you do
+                            not have an Apple Cash card, Daily Cash can be applied by you as a
+                            credit on your statement balance. 3% is the total amount of Daily Cash
+                            earned for these purchases. See the Apple Card Customer Agreement for
+                            more details on Daily Cash and qualifying transactions.
+                        </Text>
+                        <Text style={footerText}>2. Subject to credit approval.</Text>
+                        <Text style={footerText}>
+                            To access and use all the features of Apple Card, you must add Apple
+                            Card to Wallet on an iPhone or iPad with iOS or iPadOS 13.2 or later.
+                            Update to the latest version of iOS or iPadOS by going to Settings
+                            &gt; General &gt; Software Update. Tap Download and Install.
+                        </Text>
+                        <Text style={footerText}>
+                            Available for qualifying applicants in the United States.
+                        </Text>
+                        <Text style={footerText}>
+                            Apple Card is issued by Goldman Sachs Bank USA, Salt Lake City Branch.
+                        </Text>
+                        <Text style={footerText}>
+                            If you reside in the US territories, please call Goldman Sachs at
+                            877-255-5923 with questions about Apple Card.
+                        </Text> */}
+                    {/* <Text style={footerTextCenter}>
+                            Privacy: We use a
+                            <Link href="http://support.apple.com/kb/HT207233" style={footerLink}>
+                                {" "}
+                                Subscriber ID{" "}
                             </Link>
-                        </Column>
-                    </Row>
-                </Section>
-                <Hr style={walletBottomLine} />
-                <Text style={footerText}>
-                    1. 3% savings is earned as Daily Cash and is transferred to your Apple
-                    Cash card when transactions post to your Apple Card account. If you do
-                    not have an Apple Cash card, Daily Cash can be applied by you as a
-                    credit on your statement balance. 3% is the total amount of Daily Cash
-                    earned for these purchases. See the Apple Card Customer Agreement for
-                    more details on Daily Cash and qualifying transactions.
-                </Text>
-                <Text style={footerText}>2. Subject to credit approval.</Text>
-                <Text style={footerText}>
-                    To access and use all the features of Apple Card, you must add Apple
-                    Card to Wallet on an iPhone or iPad with iOS or iPadOS 13.2 or later.
-                    Update to the latest version of iOS or iPadOS by going to Settings
-                    &gt; General &gt; Software Update. Tap Download and Install.
-                </Text>
-                <Text style={footerText}>
-                    Available for qualifying applicants in the United States.
-                </Text>
-                <Text style={footerText}>
-                    Apple Card is issued by Goldman Sachs Bank USA, Salt Lake City Branch.
-                </Text>
-                <Text style={footerText}>
-                    If you reside in the US territories, please call Goldman Sachs at
-                    877-255-5923 with questions about Apple Card.
-                </Text>
-                <Text style={footerTextCenter}>
-                    Privacy: We use a
-                    <Link href="http://support.apple.com/kb/HT207233" style={footerLink}>
-                        {" "}
-                        Subscriber ID{" "}
-                    </Link>
-                    to provide reports to developers.
-                </Text>
-                <Text style={footerTextCenter}>
-                    Get help with subscriptions and purchases.
-                    <Link
-                        href="https://support.apple.com/billing?cid=email_receipt"
-                        style={footerLink}
-                    >
-                        Visit Apple Support.
-                    </Link>
-                </Text>
-                <Text style={footerTextCenter}>
-                    Learn how to{" "}
-                    <Link href="https://support.apple.com/kb/HT204030?cid=email_receipt_itunes_article_HT204030">
-                        manage your password preferences
-                    </Link>{" "}
-                    for iTunes, Apple Books, and App Store purchases.
-                </Text>
+                            to provide reports to developers.
+                        </Text> */}
+                    <Text style={footerTextCenter}>
+                        {'Dudas o aclaraciones '}
+                        <Link
+                            href="mailto:contacto@badurango.org.mx"
+                            style={footerLink}
+                        >
+                            contacto@badurango.org.mx
+                        </Link>
+                    </Text>
+                    {/* <Text style={footerTextCenter}>
+                            Learn how to{" "}
+                            <Link href="https://support.apple.com/kb/HT204030?cid=email_receipt_itunes_article_HT204030">
+                                manage your password preferences
+                            </Link>{" "}
+                            for iTunes, Apple Books, and App Store purchases.
+                        </Text> */}
 
-                <Text style={footerTextCenter}>
-                    {" "}
-                    You have the option to stop receiving email receipts for your
-                    subscription renewals. If you have opted out, you can still view your
-                    receipts in your account under Purchase History. To manage receipts or
-                    to opt in again, go to{" "}
-                    <Link href="https://finance-app.itunes.apple.com/account/subscriptions?unsupportedRedirectUrl=https://apps.apple.com/US/invoice">
-                        Account Settings.
-                    </Link>
-                </Text>
-                <Section>
-                    <Row>
-                        <Column align="center" style={footerIcon}>
-                            <Img
-                                src={`${baseUrl}/static/apple-logo.png`}
-                                width="26"
-                                height="26"
-                                alt="Apple Card"
-                            />
-                        </Column>
-                    </Row>
-                </Section>
-                <Text style={footerLinksWrapper}>
-                    <Link href="https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/accountSummary?mt=8">
-                        Account Settings
-                    </Link>{" "}
-                    •{" "}
-                    <Link href="https://www.apple.com/legal/itunes/us/sales.html">
-                        Terms of Sale
-                    </Link>{" "}
-                    •{" "}
-                    <Link href="https://www.apple.com/legal/privacy/">
-                        Privacy Policy{" "}
-                    </Link>
-                </Text>
-                <Text style={footerCopyright}>
-                    Copyright © 2023 Apple Inc. <br />{" "}
-                    <Link href="https://www.apple.com/legal/">All rights reserved</Link>
-                </Text>
-            </Container>
-        </Body>
-    </Html>
-);
+                    {/* <Text style={footerTextCenter}>
+                            {" "}
+                            You have the option to stop receiving email receipts for your
+                            subscription renewals. If you have opted out, you can still view your
+                            receipts in your account under Purchase History. To manage receipts or
+                            to opt in again, go to{" "}
+                            <Link href="https://finance-app.itunes.apple.com/account/subscriptions?unsupportedRedirectUrl=https://apps.apple.com/US/invoice">
+                                Account Settings.
+                            </Link>
+                        </Text> */}
+                    {/* <Section>
+                            <Row>
+                                <Column align="center" style={footerIcon}>
+                                    <Img
+                                        src={`${baseUrl}/static/apple-logo.png`}
+                                        width="26"
+                                        height="26"
+                                        alt="Apple Card"
+                                    />
+                                </Column>
+                            </Row>
+                        </Section>
+                        <Text style={footerLinksWrapper}>
+                            <Link href="https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/accountSummary?mt=8">
+                                Account Settings
+                            </Link>{" "}
+                            •{" "}
+                            <Link href="https://www.apple.com/legal/itunes/us/sales.html">
+                                Terms of Sale
+                            </Link>{" "}
+                            •{" "}
+                            <Link href="https://www.apple.com/legal/privacy/">
+                                Privacy Policy{" "}
+                            </Link>
+                        </Text>
+                        <Text style={footerCopyright}>
+                            Copyright © 2023 Apple Inc. <br />{" "}
+                            <Link href="https://www.apple.com/legal/">All rights reserved</Link>
+                        </Text> */}
+                </Container>
+            </Body>
+        </Html>
+    )
+};
 
 const main = {
     fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif',
@@ -306,7 +329,7 @@ const resetText = {
 
 const container = {
     margin: "0 auto",
-    padding: "20px 0 48px",
+    padding: "48px 20px",
     width: "660px",
     maxWidth: "100%",
 };

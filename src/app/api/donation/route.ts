@@ -3,6 +3,8 @@ import { TDonationPaymentStatus, TDonationType, donationType } from "@/types";
 import { Donation, Donor, Product } from "@/server/models";
 import { getProductById } from "@/server/handlers/product.handlers";
 import { getDonorByRfc } from "@/server/handlers/donor.handlers";
+import { sendSuccessDonationEmail } from "@/emails";
+import { format } from "date-fns";
 
 export async function POST(request: Request) {
   const data: {
@@ -37,6 +39,7 @@ export async function POST(request: Request) {
       type: data.type,
       paymentStatus: data.paymentStatus,
     };
+
     const newDonation = new Donation(donationInfo);
     newDonation.save();
     const updatedDonor = await Donor.findByIdAndUpdate(donor._id, {
@@ -44,6 +47,16 @@ export async function POST(request: Request) {
     });
     console.log({ updatedDonor });
     await disconnect();
+
+    // const mail = await transporter.sendMail({});
+
+    await sendSuccessDonationEmail({
+      donationDate: format(newDonation.date, "dd/MM/yyyy"),
+      donor,
+      to: donor.email,
+      total: data.amount,
+      product,
+    });
 
     return new Response(
       JSON.stringify("¡Gracias! La donación se ha registrado con éxito"),
@@ -55,6 +68,7 @@ export async function POST(request: Request) {
       }
     );
   } catch (error) {
+    console.log("Error from donation route", { error });
     await disconnect();
     return new Response(JSON.stringify(error), {
       status: 500,

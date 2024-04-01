@@ -21,9 +21,9 @@ export const DisplayChashDonation = () => {
                     <li className='flex items-center size-10'>
                         <McIcon />
                     </li>
-                    <li className='flex items-center size-10'>
+                    {/* <li className='flex items-center size-10'>
                         <IconPaypal />
-                    </li>
+                    </li> */}
                     <li className='flex items-center size-10'>
                         <IconOxxo />
                     </li>

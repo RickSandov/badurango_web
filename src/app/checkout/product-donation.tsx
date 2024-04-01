@@ -1,7 +1,7 @@
 
 'use client'
 
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useLayoutEffect } from 'react'
 import { PersonaForm } from './persona-form'
 import { CheckoutProduct } from './checkout-product'
 import { TProductOnCart } from '@/cart/CartProvider'
@@ -9,16 +9,15 @@ import { formatter } from './helpers'
 import { Payment } from '@/components/checkout/payment'
 import { CheckoutContext } from '@/checkout-context'
 import { AnimatePresence, motion } from 'framer-motion'
-import { donationType } from '@/types'
 
 export const ProductDonation = ({ product, total }: { product: TProductOnCart, total: number }) => {
 
-    const { hasRegistered, setProductToDonate, persona } = useContext(CheckoutContext);
+    const { hasRegistered, setProductIdToDonate, persona, setProductToDonate } = useContext(CheckoutContext);
     const { _id, title, description, image, price, quantity } = product;
 
-
-    useEffect(() => {
-        setProductToDonate(_id as string);
+    useLayoutEffect(() => {
+        setProductIdToDonate(_id as string);
+        setProductToDonate(product);
     }, [])
 
     return (

@@ -59,7 +59,8 @@ export const PaymentForm = () => {
                 setIsLoading(false);
                 return res.data;
             },
-            error: () => {
+            error: (err) => {
+                console.log('Error from payment-form', { err })
                 setIsLoading(false);
                 return 'Error al registrar la donación'
             }
