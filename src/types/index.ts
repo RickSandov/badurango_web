@@ -61,6 +61,7 @@ export const donationTypeArray = Object.values(donationType);
 export type TDonationType = ObjectValues<typeof donationType>;
 
 export type TDonation = {
+  _id?: Types.ObjectId | string;
   donorName: string;
   description: string;
   message?: string;
@@ -70,6 +71,7 @@ export type TDonation = {
   date: Date;
   type: TDonationType;
   paymentStatus: TDonationPaymentStatus;
+  publicDonation: boolean;
 };
 
 // Payment Types

@@ -19,6 +19,9 @@ type CartActionType =
   | {
       type: "[Cart] - Load Initial Data";
       payload: TProductOnCart[];
+    }
+  | {
+      type: "[Cart] - Clear Cart";
     };
 
 function reducerReturn(state: CartState) {
@@ -44,6 +47,13 @@ export const cartReducer = (
       return reducerReturn({
         ...state,
         products: [...state.products, newProductOnCart],
+      });
+    }
+
+    case "[Cart] - Clear Cart": {
+      return reducerReturn({
+        ...state,
+        products: [],
       });
     }
 

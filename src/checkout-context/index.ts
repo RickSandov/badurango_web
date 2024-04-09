@@ -18,5 +18,5 @@ export type TPersonaForm = {
   displayType: TDonorDisplay;
   message: string;
   publicName: string;
-  isAnonymous: boolean;
+  publicDonation: boolean;
 };

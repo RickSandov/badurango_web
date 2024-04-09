@@ -66,6 +66,8 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
             increseProduct: (product: TProductOnCart) => dispatch({ type: '[Cart] - Product plus 1', payload: product }),
             decreseProduct: (product: TProductOnCart) => dispatch({ type: '[Cart] - Product minus 1', payload: product }),
 
+            clearCart: () => dispatch({ type: '[Cart] - Clear Cart' }),
+
         }} >
             {children}
             <Cart />

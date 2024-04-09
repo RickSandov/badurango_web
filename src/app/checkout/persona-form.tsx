@@ -22,7 +22,7 @@ export const PersonaForm = () => {
         setPersona(persona as TPersonaForm);
     }
 
-    const isAnonymous = watch('isAnonymous');
+    const publicDonation = watch('publicDonation');
 
     const persona: TPersonaForm = statePersona || {
         name: '',
@@ -31,7 +31,7 @@ export const PersonaForm = () => {
         rfc: '',
         donorType: 'persona física',
         displayType: 'particular',
-        isAnonymous: false,
+        publicDonation: true,
         address: '',
         city: '',
         state: '',
@@ -40,7 +40,7 @@ export const PersonaForm = () => {
         message: '',
     }
 
-    const { name, email, phone, rfc, donorType, displayType, isAnonymous: _isAnonymous, address, city, state, postalCode, publicName, message } = persona;
+    const { name, email, phone, rfc, donorType, displayType, publicDonation: _publicDonation, address, city, state, postalCode, publicName, message } = persona;
 
     return (
         <motion.div
@@ -98,7 +98,7 @@ export const PersonaForm = () => {
                     <div className='flex flex-wrap gap-1 mb-5'>
                         <div className="flex items-center">
                             <input id="anonima" type="checkbox"
-                                {...register('isAnonymous', { value: _isAnonymous })} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                {...register('publicDonation', { value: _publicDonation })} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             <label htmlFor="anonima" className="ms-2 text-sm font-bold text-gray-700">Donación Anónima</label>
                         </div>
                         <span className='text-sm block'>Al marcar esta casilla, la donación no aparecerá en la lista pública de donantes</span>
@@ -106,7 +106,7 @@ export const PersonaForm = () => {
 
                     <div className="mb-3">
                         <AnimatePresence >
-                            {!isAnonymous ?
+                            {!publicDonation ?
                                 (
                                     <motion.div initial={{
                                         opacity: 0,

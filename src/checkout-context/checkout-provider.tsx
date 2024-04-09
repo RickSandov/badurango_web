@@ -38,7 +38,7 @@ export const CheckoutProvider: FC<PropsWithChildren> = ({ children }) => {
 
     const setPersona = async (persona: TPersonaForm) => {
         try {
-            const req = await api.post('/persona', persona);
+            const req = await api.post('/persona', { ...persona, publicDonation: !persona.publicDonation });
             const status = req.status;
             console.log({ status });
         } catch (error) {

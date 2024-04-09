@@ -22,8 +22,8 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
 
 export function DonationReceiptEmail({ donor:
     { name, rfc, phone },
-    donationDate, product, total }:
-    { donor: TDonor, donationDate: string, product?: TProduct, total: number }) {
+    donationDate, product, total, donationId }:
+    { donor: TDonor, donationDate: string, product?: TProduct, total: number, donationId: string }) {
 
     return (
         <Html>
@@ -102,8 +102,9 @@ export function DonationReceiptEmail({ donor:
                                     </Row>
                                     <Row>
                                         <Column style={informationTableColumn}>
-                                            <Text style={informationTableLabel}>ORDER</Text>
+                                            <Text style={informationTableLabel}>Donación</Text>
                                             <Link
+                                                href={`${baseUrl}/donaciones?donacion=${donationId}`}
                                                 style={{
                                                     ...informationTableValue,
                                                     color: "#15c",

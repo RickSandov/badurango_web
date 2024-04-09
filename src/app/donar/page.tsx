@@ -35,6 +35,7 @@ export default async function Donar() {
             price: 250
         }
     ]
+
     return (
         <>
             <main className='relative min-h-[100vh] pt-40'>

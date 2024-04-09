@@ -1,10 +1,11 @@
 import { connect, disconnect } from "@/server/db";
-import { TDonationPaymentStatus, TDonationType, donationType } from "@/types";
-import { Donation, Donor, Product } from "@/server/models";
+import { TDonationPaymentStatus, TDonationType } from "@/types";
+import { Donation, Donor } from "@/server/models";
 import { getProductById } from "@/server/handlers/product.handlers";
 import { getDonorByRfc } from "@/server/handlers/donor.handlers";
 import { sendSuccessDonationEmail } from "@/emails";
 import { format } from "date-fns";
+import { formatter } from "@/app/checkout/helpers";
 
 export async function POST(request: Request) {
   const data: {
@@ -15,6 +16,7 @@ export async function POST(request: Request) {
     amount: number;
     message: string;
     paymentStatus: TDonationPaymentStatus;
+    publicDonation: boolean;
   } = await request.json();
 
   try {
@@ -26,7 +28,9 @@ export async function POST(request: Request) {
       ? `Donación de ${data.amount / product.price} unidades de ${
           product.title
         } ${product.description} hecha por ${donor?.name} con RFC ${donor?.rfc}`
-      : `Donación de efectivo por la cantidad de ${data.amount} hecha por ${donor?.name} con RFC ${donor?.rfc}`;
+      : `Donación de efectivo por la cantidad de ${formatter.format(
+          data.amount
+        )} hecha por ${donor?.name} con RFC ${donor?.rfc}`;
 
     const donationInfo = {
       donorName: donor.name,
@@ -38,6 +42,7 @@ export async function POST(request: Request) {
       date: new Date(),
       type: data.type,
       paymentStatus: data.paymentStatus,
+      publicDonation: data.publicDonation || false,
     };
 
     const newDonation = new Donation(donationInfo);
@@ -53,10 +58,14 @@ export async function POST(request: Request) {
       to: donor.email,
       total: data.amount,
       product,
+      donationId: newDonation._id,
     });
 
     return new Response(
-      JSON.stringify("¡Gracias! La donación se ha registrado con éxito"),
+      JSON.stringify({
+        message: "¡Gracias! La donación se ha registrado con éxito",
+        donation: newDonation,
+      }),
       {
         status: 200,
         headers: {

@@ -26,16 +26,18 @@ export async function sendSuccessDonationEmail({
   donationDate,
   product,
   total,
+  donationId,
 }: {
   to: string;
   donor: TDonor;
   donationDate: string;
   product?: TProduct;
   total: number;
+  donationId: string;
 }) {
   try {
     const emailHtml = render(
-      DonationReceiptEmail({ donor, donationDate, product, total })
+      DonationReceiptEmail({ donor, donationDate, product, total, donationId })
     );
 
     const options = {

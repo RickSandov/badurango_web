@@ -39,6 +39,11 @@ const DonationSchema = new Schema<TDonation>({
     type: String,
     required: true,
   },
+  publicDonation: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 
 export default models.Donation || model("Donation", DonationSchema);

@@ -15,6 +15,7 @@ export interface CartContextProps {
     removeProduct: (product: TProduct) => void;
     increseProduct: (product: TProductOnCart) => void;
     decreseProduct: (product: TProductOnCart) => void;
+    clearCart: () => void;
 
     // Getters
     getTotalAmount: () => number;
