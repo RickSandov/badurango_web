@@ -14,7 +14,7 @@ export async function SavePersonaForm(persona: TPersonaForm): Promise<TDonor> {
     city: persona.city,
     state: persona.state,
     postalCode: persona.postalCode,
-    publicDonor: !persona.isAnonymous,
+    publicDonor: !persona.publicDonation,
   };
 
   const donorExists = await getDonorByRfc(persona.rfc);

@@ -21,7 +21,6 @@ export const DonateForm = () => {
         toast.promise(req, {
             loading: 'Enviando...',
             success: (res: any) => {
-                console.log({ res });
                 reset();
                 setIsLoading(false);
                 return res.data;
