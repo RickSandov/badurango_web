@@ -65,7 +65,7 @@ export const AboutUs = () => {
                 <div className='relative z-10' >
                     <h3 className='text-3xl font-black text-white bg-bared p-4 inline z-11'>¿Quienes somos?</h3>
                     <p className='mt-4 text-black md:max-w-[60%] bg-white p-2'>Somos una <strong>organización civil</strong> sin fines de lucro con la misión de <strong>abatir la pobreza alimentaria</strong>, por medio del rescate de todo aquel alimento que no sea comercializable, evitando así su desperdicio y canalizándolo a las familias que se encuentran en inseguridad alimentaria.</p>
-                    <div className='absolute hidden -right-16 bottom-48 md:block lg:bottom-24' >
+                    <div className='absolute hidden -right-16 bottom-48 md:block md:-right-8 lg:bottom-24 ' >
                         <div className='w-[400px] z-10 aspect-[430/475] relative'>
                             <Image src='/images/girl.png' alt='niña' fill className='relative object-cover' />
                         </div>
