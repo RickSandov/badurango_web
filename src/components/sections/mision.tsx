@@ -10,19 +10,19 @@ const items = [
     {
         title: 'Misión',
         text: () => (
-            <p className='drop-shadow-sm text-white'><strong>Rescatar</strong> y <strong>distribuir</strong> alimentos a través del desarrollo y fortalecimiento de la red nacional de <strong>Bancos de Alimentos</strong> involucrando a la sociedad Duranguense para contribuir a un México <strong>sustentable y sin hambre</strong>.</p>
+            <p className='drop-shadow-sm p-4'><strong>Rescatar</strong> y <strong>distribuir</strong> alimentos a través del desarrollo y fortalecimiento de la red nacional de <strong>Bancos de Alimentos</strong> involucrando a la sociedad Duranguense para contribuir a un México <strong>sustentable y sin hambre</strong>.</p>
         )
     },
     {
         title: 'Visión',
         text: () => (
-            <p className='drop-shadow-sm text-white'>Ser la institución con el modelo más efectivo para <strong>acabar con el hambre</strong> y el <strong>desperdicio</strong> del alimentos en México en el 2030.</p>
+            <p className='drop-shadow-sm p-4'>Ser la institución con el modelo más efectivo para <strong>acabar con el hambre</strong> y el <strong>desperdicio</strong> del alimentos en México en el 2030.</p>
         )
     },
     {
         title: 'Valores',
         text: () => (
-            <p className='drop-shadow-sm text-white'><strong>Ayudar</strong> a quien lo necesita, actuando con  <strong>integridad, respeto, dignidad, igualdad y transparencia</strong> en todos los procesos que implica la operación.</p>
+            <p className='drop-shadow-sm p-4'><strong>Ayudar</strong> a quien lo necesita, actuando con  <strong>integridad, respeto, dignidad, igualdad y transparencia</strong> en todos los procesos que implica la operación.</p>
         )
     },
 ]
@@ -50,11 +50,13 @@ export const Mision = () => {
             />
 
             <div className='my-10 px-8 w-full flex items-center justify-center py-10'>
-                <ul className='flex flex-col md:flex-row md:flex-wrap gap-8 md:gap-32  w-full items-start justify-center' >
+                <ul className='flex flex-col gap-8 w-full items-start justify-center md:flex-row md:flex-wrap md:gap-32 ' >
                     {items.map(({ title, text }) => (
-                        <li key={title} className='flex flex-col items-center text-center md:text-left md:w-[300px]'>
-                            <h3 className='text-3xl font-bold px-3 py-2 text-black bg-primary shadow-sm mb-3'>{title}</h3>
-                            {text()}
+                        <li key={title} className='flex flex-col items-center text-center md:text-left md:w-[300px] bg-white'>
+                            <h3 className='text-center w-full text-3xl font-bold px-3 py-2 text-primary bg-black shadow-sm'>{title}</h3>
+                            <div>
+                                {text()}
+                            </div>
                         </li>
                     ))}
                 </ul>

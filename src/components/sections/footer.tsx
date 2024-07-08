@@ -43,7 +43,7 @@ export const Footer = () => {
                 </div>
             </div>
 
-            <div className='w-full py-5 px-5 bg-bared flex justify-center md:justify-between items-center flex-wrap gap-4'>
+            <div className='w-full py-5 px-5 bg-baBlue flex justify-center md:justify-between items-center flex-wrap gap-4'>
                 <p className='text-xs leading-none'>Copyright 2024 | BADGO todos los derechos reservados</p>
                 <div className='text-xs'>
                     Política de privacidad | Términos de uso
