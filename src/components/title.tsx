@@ -6,17 +6,31 @@ type Props = {
     text: string
     className?: string
     position?: 'left' | 'center' | 'right'
+    box: boolean
 }
 
 export const Title = ({
     text,
     className,
-    position = 'left'
+    position = 'left',
+    box = false
 }: Props) => {
+
+    const titleTextComponent = <h3 className={`text-5xl font-bold text-black relative'
+        } ${className}`} >
+        {text}
+    </h3>
+
     return (
-        <h3 className={`max-w-[90%] text-3xl font-black text-black relative after:absolute after:-bottom-2 after:w-24 after:h-2 after:bg-bared w-full ${position === 'center' ? 'text-center after:left-1/2 after:-translate-x-1/2 mx-auto' : position === 'right' ? 'text-right' : 'text-left after:left-0'
-            } ${className}`} >
-            {text}
-        </h3>
+
+        <>
+            {
+                box ? (
+                    <div className="bg-primary w-[680px] h-24 flex float-left justify-center items-center" > 
+                        {titleTextComponent}
+                    </div>
+                ) : titleTextComponent
+            }
+        </>
     )
 }
