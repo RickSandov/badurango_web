@@ -27,7 +27,7 @@ export const Navbar = () => {
     const path = usePathname()
     if (path === '/checkout') return null;
     return (
-        <nav className='fixed z-20 flex items-center justify-between w-full px-5 py-5 bg-black md:px-10'>
+        <nav className='fixed z-50 flex items-center justify-between w-full px-5 py-5 bg-black md:px-10'>
             <div className="w-16">
                 <Link href='/'>
                     <Logo className="fill-primary" />

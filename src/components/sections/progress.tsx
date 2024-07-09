@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { calcLength, motion, useAnimation } from 'framer-motion';
 
 export const Progress = () => {
     const [percentage, setPercentage] = useState(30);
@@ -25,7 +25,7 @@ export const Progress = () => {
             </h3>
 
             <div className='flex flex-col-reverse w-full justify-between px-8 lg:flex-row lg:px-14'>
-                <div className='relative flex h-80 lg:w-3/5 mt-12 lg:mt-0'>
+                <div className='relative flex h-80 lg:w-3/5 mt-12 lg:mt-0 lg-h-96'>
                     <div className='relative bg-baCream border-primary border-8 h-full w-8 md:w-16 lg:w-22'>
                         <div style={{ height: `${percentage}%` }} className='absolute bottom-0 bg-primary w-full flex items-center justify-center'>
                             <h4 className='text-white font-bold text-xs lg:text-base'>{percentage}%</h4>
@@ -60,8 +60,10 @@ export const Progress = () => {
                         />
                     </div>
 
-                    <div style={{ bottom: `${percentage}%` }} className='absolute flex z-30 -left-1 w-[101%] -translate-y-1'>
-                        <span className='absolute bg-bared w-full h-2 z-40 before:absolute before:top-[50%] before:bottom-[50%] before:translate-y-[-50%] before:bg-bared before:w-[4.7px] before:h-[21.3px] after:absolute after:top-[50%] after:bottom-[50%] after:translate-y-[-50%] after:right-0 after:bg-bared after:w-[4.7px] after:h-[21.3px]' />
+                    <div style={{ bottom: `${percentage}%`, width: "calc(100% + 9px)" }} className='absolute flex z-30 -left-1 w-full -translate-y-1'>
+                        <span className='absolute bg-bared w-full h-2 z-40 
+                        before:absolute before:top-[50%] before:bottom-[50%] before:translate-y-[-50%] before:bg-bared before:w-[4.7px] before:h-[21.3px] 
+                        after:absolute after:top-[50%] after:bottom-[50%] after:translate-y-[-50%] after:right-0 after:bg-bared after:w-[4.7px] after:h-[21.3px]' />
 
                         <div className='absolute -left-9 top-0 flex flex-col text-black md:-left-12 lg:-left-16'>
                             <h6 className='absolute -top-2 font-semibold text-[8px] self-end md:-top-2 md:text-[12px] lg:text-xs'>actual</h6>
@@ -78,6 +80,7 @@ export const Progress = () => {
                         </div>
                     ))}
                 </div>
+
             </div>
         </section>
     );

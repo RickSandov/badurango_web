@@ -42,10 +42,12 @@ export const AboutUs = () => {
             <div className='flex px-12 py-20 md:px-20 bg-black'>
                 <ul className='flex flex-col gap-8 text-white md:flex-row md:flex-wrap md:w-[60vw] lg:w-[70vw]'>
                     {items.map(({ image, text }) => (
-                        <li key={image} className='flex items-center text-left'>
-                            <Image className='self-start' src={image} alt={image} width={40} height={40} />
-                            <span className='block w-2 h-24 my-3 ml-3 bg-primary md:my-0 mx-3' ></span>
-                            {text()}
+                        <li key={image}>
+                            <article className='flex items-center text-left '>
+                                <Image className='self-start' src={image} alt={image} width={40} height={40} />
+                                <span className='block w-2 h-24 my-3 ml-3 bg-primary md:my-0 mx-3'></span>
+                                {text()}
+                            </article>
                         </li>
                     ))}
                 </ul>
@@ -62,15 +64,15 @@ export const AboutUs = () => {
                 </svg>
 
 
-                <div className='relative z-10' >
+                <article className='relative z-10' >
                     <h3 className='text-3xl font-black text-white bg-bared p-4 inline z-11'>¿Quienes somos?</h3>
                     <p className='mt-4 text-black md:max-w-[60%] bg-white p-2'>Somos una <strong>organización civil</strong> sin fines de lucro con la misión de <strong>abatir la pobreza alimentaria</strong>, por medio del rescate de todo aquel alimento que no sea comercializable, evitando así su desperdicio y canalizándolo a las familias que se encuentran en inseguridad alimentaria.</p>
-                    <div className='absolute hidden -right-16 bottom-48 md:block md:-right-8 lg:bottom-24 ' >
+                    <div className='absolute hidden -right-16 bottom-48 lg:block md:-right-8 lg:bottom-24 ' >
                         <div className='w-[400px] z-10 aspect-[430/475] relative'>
                             <Image src='/images/girl.png' alt='niña' fill className='relative object-cover' />
                         </div>
                     </div>
-                </div>
+                </article>
             </div >
         </section >
     )
