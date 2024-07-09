@@ -8,14 +8,14 @@ export const Progress = () => {
 
     // Datos de ejemplo para las etiquetas
     const labels = [
-        { color: '#2141A5', label: "Terreno" },
-        { color: '#439699', label: "Despalme y limpieza" },
-        { color: '#5DCB3C', label: "Plataformas" },
-        { color: '#BF2873', label: "Cimentación" },
-        { color: '#E83323', label: "Barda perimetral" },
-        { color: '#EC7D30', label: "Infraestructura y estacionamiento" },
-        { color: '#F3AF3D', label: "Edificación" },
-        { color: '#6917A7', label: "Equipamiento" },
+        { competed: true, color: '#2141A5', label: "Terreno" },
+        { competed: true, color: '#439699', label: "Despalme y limpieza" },
+        { competed: true, color: '#5DCB3C', label: "Plataformas" },
+        { competed: true, color: '#BF2873', label: "Cimentación" },
+        { competed: false, color: '#E83323', label: "Barda perimetral" },
+        { competed: false, color: '#EC7D30', label: "Infraestructura y estacionamiento" },
+        { competed: false, color: '#F3AF3D', label: "Edificación" },
+        { competed: false, color: '#6917A7', label: "Equipamiento" },
     ];
 
     return (
@@ -75,7 +75,11 @@ export const Progress = () => {
                 {/* Etiquetas */}
                 <div className='flex flex-wrap items-center justify-center gap-2 lg:h-32 lg:w-2/5'>
                     {labels.map((label, index) => (
-                        <div key={index} style={{ backgroundColor: label.color }} className='inline-block rounded-md text-white font-normal p-2 text-center text-md'>
+                        <div key={index} style={{
+                            backgroundColor: label.color, opacity: label.competed ? 1 : 0.4,
+                            borderColor: !label.competed ? 'transparent' : 'black',
+                            borderWidth: label.competed ? 2 : 0
+                        }} className='inline-block rounded-md text-white font-normal p-2 text-center text-md'>
                             <span className='text-lg font-bold'>{index + 1}</span> {label.label}
                         </div>
                     ))}

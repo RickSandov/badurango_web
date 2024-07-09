@@ -100,18 +100,18 @@ export const BProject = () => {
     };
 
     return (
-        <section className="bg-black flex flex-col items-end justify-center py-12 px-12 gap-6 md:flex-row md:justify-between  ">
+        <section className="bg-black flex flex-col items-start justify-center py-12 px-12 gap-6 md:flex-row md:justify-between  ">
 
             <div className="flex flex-col justify-center items-center gap-6 md:w-5/12  ">
                 <BSvg className="w-[100%]" />
 
-                <p className="text-white font-bold w-[100%] text-center ">
+                <p className="text-white font-bold max-w-[400px] text-center ">
                     Gráfica de recaudación por equipo en la venta de cuponera Banco de Alimentos
                 </p>
 
-                <button className="p-4 text-white bg-primary font-bold w-[80%]">
+                {/* <button className="p-4 text-white bg-primary font-bold w-[80%]">
                     más información
-                </button>
+                </button> */}
             </div>
 
             <div className="w-full h-full flex justify-center items-center md:justify-end px-6 md:p-0 md:w-7/12 ">
