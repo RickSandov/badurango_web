@@ -19,3 +19,13 @@ export const getDonationById = async (
 
   return donation;
 };
+
+export const getDonations = async (): Promise<TDonation[]> => {
+  try {
+    const donations = await Donation.find();
+    return donations;
+  } catch (error) {
+    console.log("error from getDonations handler", { error });
+    return [];
+  }
+};
