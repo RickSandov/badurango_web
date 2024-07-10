@@ -155,3 +155,24 @@ export type TPaymentIntent = {
   source: null | any;
   status: TDonationPaymentStatus;
 };
+
+// Buyer Types
+
+export const buyerStatus = {
+  pagado: "pagado",
+  pendiente: "pendiente",
+  cancelado: "cancelado",
+} as const;
+
+export const buyerStatusArray = Object.values(buyerStatus);
+
+export type TBuyerStatus = ObjectValues<typeof buyerStatus>;
+
+export type TBuyer = {
+  _id: string;
+  name: string;
+  date: Date;
+  phone: string;
+  userId: string;
+  status: TBuyerStatus;
+};

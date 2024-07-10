@@ -17,3 +17,14 @@ export const SaveContactForm = async (
   await newContactForm.save();
   return newContactForm;
 };
+
+export const getContacts = async (): Promise<TContactForm[]> => {
+  try {
+    await connect();
+    const contacts = await Contact.find();
+    await disconnect();
+    return contacts;
+  } catch (error) {
+    return [];
+  }
+};

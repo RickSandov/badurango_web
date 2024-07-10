@@ -1,4 +1,7 @@
-import { SaveContactForm } from "@/server/handlers/contact.handlers";
+import {
+  getContacts,
+  SaveContactForm,
+} from "@/server/handlers/contact.handlers";
 import { connect, disconnect } from "@/server/db";
 import { sendSuccessDonationEmail } from "@/emails";
 import { Types } from "mongoose";
@@ -25,6 +28,33 @@ export async function POST(request: Request) {
       },
     }
   );
+}
+
+export async function GET() {
+  try {
+    await connect();
+    const contacts = await getContacts();
+    await disconnect();
+    return new Response(
+      JSON.stringify({
+        contacts,
+      }),
+      {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  } catch (error) {
+    console.log("Errod: GET/api/contact: \n", error);
+    return new Response(JSON.stringify({ error }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 }
 
 // export async function GET(request: Request) {
