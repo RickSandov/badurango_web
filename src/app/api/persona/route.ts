@@ -1,6 +1,5 @@
 import { connect, disconnect } from "@/server/db";
 import { SavePersonaForm } from "@/server/handlers/donor.handlers";
-import { stripe } from "../stripe";
 
 export async function POST(req: Request) {
   try {

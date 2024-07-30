@@ -157,7 +157,6 @@ export type TPaymentIntent = {
 };
 
 // Buyer Types
-
 export const buyerStatus = {
   pagado: "pagado",
   pendiente: "pendiente",
@@ -173,6 +172,93 @@ export type TBuyer = {
   name: string;
   date: Date;
   phone: string;
-  userId: string;
+  email: string;
+  userId: Types.ObjectId | string;
+  teamId: Types.ObjectId | string;
+  braceletCount: number;
+};
+
+export type TBracelet = {
+  _id: string;
+  buyerId: Types.ObjectId | string;
+  teamId: Types.ObjectId | string;
+  date: Date;
+  folio: string;
+};
+
+export type createBuyerDTO = {
+  name: string;
+  phone: string;
+  userId: Types.ObjectId | string;
   status: TBuyerStatus;
+};
+
+// User types
+export const userType = {
+  admin: "admin",
+  team: "team",
+  teamAdmin: "teamAdmin",
+} as const;
+
+export const userTypeArray = Object.values(userType);
+
+export type TUserType = ObjectValues<typeof userType>;
+
+export type TUser = {
+  _id: Types.ObjectId | string;
+  teamId: Types.ObjectId | string;
+  name: string;
+  username: string;
+  password: string;
+  type: TUserType;
+};
+
+export type TDisplayUser = {
+  _id: Types.ObjectId | string;
+  name: string;
+  totalSales: number;
+  username: string;
+  type: TUserType;
+};
+
+export type createUserDTO = {
+  name: string;
+  teamId: string;
+  username: string;
+  password: string;
+  type: TUserType;
+};
+
+export type TTimeEvent = {
+  _id: string;
+  date: Date;
+  description: string;
+  title: string;
+  image: {
+    url: string;
+    key: string;
+  };
+};
+
+export type TPostTimeEvent = {
+  date: string;
+  description: string;
+  title: string;
+  image: File;
+};
+
+export type TPutTimeEvent = {
+  _id: string;
+  date?: string;
+  description?: string;
+  title?: string;
+  image?: File;
+};
+
+// Team Types
+export type TTeam = {
+  _id: Types.ObjectId | string;
+  name: string;
+  description: string;
+  color: string;
 };
