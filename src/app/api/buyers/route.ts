@@ -14,6 +14,7 @@ export async function GET() {
     const stats: {
       team: string;
       quantity: number;
+      color: string;
     }[] = [];
 
     for (const team of teams as TTeam[]) {
@@ -23,6 +24,7 @@ export async function GET() {
       stats.push({
         team: team.name,
         quantity: userBuyers.reduce((a, b) => a + b.braceletCount, 0),
+        color: team.color,
       });
     }
 
