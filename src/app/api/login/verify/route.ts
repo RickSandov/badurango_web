@@ -18,6 +18,15 @@ export async function GET(request: NextRequest) {
   try {
     await connect();
     const user = await verifyToken(token);
+    if (!user) {
+      return new Response(JSON.stringify({ error: "Invalid token" }), {
+        status: 401,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+    user.password = "";
     await disconnect();
     return new Response(JSON.stringify({ user }), {
       status: 200,

@@ -9,6 +9,7 @@ const UserSchema = new Schema<TUser>({
   username: {
     type: String,
     required: true,
+    unique: true,
   },
   teamId: {
     type: Schema.Types.ObjectId,

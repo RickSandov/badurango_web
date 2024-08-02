@@ -38,6 +38,7 @@ export async function POST(request: Request) {
       user.type,
       user.teamId?.toString()
     );
+    user.password = "";
     return new Response(JSON.stringify({ token, user }), {
       status: 200,
       headers: {
