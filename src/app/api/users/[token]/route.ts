@@ -42,7 +42,7 @@ export async function PATCH(
       newUserInfo.password = hashedPassword;
     }
 
-    if (body.username) {
+    if (body.username && body.username !== user.username) {
       const userExists = await User.findOne({ username: body.username });
       if (userExists) {
         await disconnect();

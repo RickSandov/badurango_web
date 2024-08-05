@@ -6,7 +6,10 @@ const TimeEventSchema = new Schema<TTimeEvent>({
     type: Date,
     required: true,
   },
-
+  title: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: false,
