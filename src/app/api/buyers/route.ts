@@ -2,7 +2,6 @@ import { connect, disconnect } from "@/server/db";
 import { getBuyers, saveBuyer } from "@/server/handlers/buyer.handler";
 import Bracelet from "@/server/models/bracelet.model";
 import Team from "@/server/models/team.model";
-import userModel from "@/server/models/user.model";
 import { TTeam } from "@/types";
 
 export async function GET() {

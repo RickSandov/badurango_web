@@ -1,7 +1,5 @@
 import { connect, disconnect } from "@/server/db";
-import Bracelet from "@/server/models/bracelet.model";
 import Buyer from "@/server/models/buyer.model";
-import Team from "@/server/models/team.model";
 import User from "@/server/models/user.model";
 import { TDisplayUser } from "@/types";
 

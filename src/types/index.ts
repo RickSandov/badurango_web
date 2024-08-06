@@ -177,6 +177,10 @@ export type TBuyer = {
   teamId: Types.ObjectId | string;
   braceletCount: number;
 };
+export type TBuyerWithBracelet = Omit<TBuyer, "teamId" | "userId"> & {
+  bracelets: TBracelet[];
+  team: string;
+};
 
 export type TBracelet = {
   _id: string;
