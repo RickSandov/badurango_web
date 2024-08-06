@@ -11,7 +11,6 @@ export async function GET() {
     const bracelets = await Bracelet.find();
     const teams = await Team.find();
     const buyerWithBracelets: TBuyerWithBracelet[] = [];
-    await disconnect();
     for (const buyer of buyers) {
       const buyerBracelets = bracelets.filter(
         (bracelet) => bracelet.buyerId.toString() == buyer._id.toString()
@@ -30,6 +29,7 @@ export async function GET() {
         team: team.name,
       });
     }
+    await disconnect();
     return new Response(JSON.stringify(buyerWithBracelets), {
       status: 200,
       headers: {
